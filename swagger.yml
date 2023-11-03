@@ -1,0 +1,887 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API do projeto de Vendas usando segurança",
+        "version": "1.0",
+        "title": "Vendas API",
+        "contact": {
+            "name": "Kassia Albuquerque",
+            "url": "https://github.com/KassiaRSAlbuquerque",
+            "email": "krsa@gmail.com"
+        }
+    },
+    "host": "localhost:8080",
+    "basePath": "/vendaSpringWebApplication",
+    "tags": [
+        {
+            "name": "cliente-controller",
+            "description": "Cliente Controller"
+        },
+        {
+            "name": "item-pedido-controller",
+            "description": "Item Pedido Controller"
+        },
+        {
+            "name": "pedido-controller",
+            "description": "Pedido Controller"
+        },
+        {
+            "name": "produto-controller",
+            "description": "Produto Controller"
+        },
+        {
+            "name": "usuario-controller",
+            "description": "Usuario Controller"
+        }
+    ],
+    "paths": {
+        "/clientes": {
+            "get": {
+                "tags": [
+                    "cliente-controller"
+                ],
+                "summary": "retriveAllClientes",
+                "operationId": "retriveAllClientesUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "cliente",
+                        "description": "cliente",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Cliente"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "cliente-controller"
+                ],
+                "summary": "createCliente",
+                "operationId": "createClienteUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "cliente",
+                        "description": "cliente",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/clientes/{id}": {
+            "get": {
+                "tags": [
+                    "cliente-controller"
+                ],
+                "summary": "retriveCliente",
+                "operationId": "retriveClienteUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "cliente-controller"
+                ],
+                "summary": "deleteCliente",
+                "operationId": "deleteClienteUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "cliente-controller"
+                ],
+                "summary": "updateProduto",
+                "operationId": "updateProdutoUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "cliente",
+                        "description": "cliente",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Cliente"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/itensPedido": {
+            "get": {
+                "tags": [
+                    "item-pedido-controller"
+                ],
+                "summary": "retriveAllItemPedidos",
+                "operationId": "retriveAllItemPedidosUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "itemPedido",
+                        "description": "itemPedido",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ItemPedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ItemPedido"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "item-pedido-controller"
+                ],
+                "summary": "createItemPedido",
+                "operationId": "createItemPedidoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "itemPedido",
+                        "description": "itemPedido",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ItemPedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/ItemPedido"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/itensPedido/{id}": {
+            "get": {
+                "tags": [
+                    "item-pedido-controller"
+                ],
+                "summary": "retriveItemPedido",
+                "operationId": "retriveItemPedidoUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ItemPedido"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "item-pedido-controller"
+                ],
+                "summary": "deleteItemPedido",
+                "operationId": "deleteItemPedidoUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "item-pedido-controller"
+                ],
+                "summary": "updateItemPedido",
+                "operationId": "updateItemPedidoUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "body",
+                        "name": "itemPedido",
+                        "description": "itemPedido",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ItemPedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/pedidos": {
+            "get": {
+                "tags": [
+                    "pedido-controller"
+                ],
+                "summary": "retriveAllPedidos",
+                "operationId": "retriveAllPedidosUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "pedido",
+                        "description": "pedido",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Pedido"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "pedido-controller"
+                ],
+                "summary": "createPedido",
+                "operationId": "createPedidoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "pedido",
+                        "description": "pedido",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/pedidos/{id}": {
+            "get": {
+                "tags": [
+                    "pedido-controller"
+                ],
+                "summary": "retrivePedido",
+                "operationId": "retrivePedidoUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "pedido-controller"
+                ],
+                "summary": "deletePedido",
+                "operationId": "deletePedidoUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "pedido-controller"
+                ],
+                "summary": "updatePedido",
+                "operationId": "updatePedidoUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "body",
+                        "name": "pedido",
+                        "description": "pedido",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Pedido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/produtos": {
+            "get": {
+                "tags": [
+                    "produto-controller"
+                ],
+                "summary": "retriveAllProdutos",
+                "operationId": "retriveAllProdutosUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "produto",
+                        "description": "produto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Produto"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "produto-controller"
+                ],
+                "summary": "createProduto",
+                "operationId": "createProdutoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "produto",
+                        "description": "produto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/produtos/{id}": {
+            "get": {
+                "tags": [
+                    "produto-controller"
+                ],
+                "summary": "retriveProduto",
+                "operationId": "retriveProdutoUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "produto-controller"
+                ],
+                "summary": "deleteProduto",
+                "operationId": "deleteProdutoUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "produto-controller"
+                ],
+                "summary": "updateProduto",
+                "operationId": "updateProdutoUsingPATCH_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "body",
+                        "name": "produto",
+                        "description": "produto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/usuarios": {
+            "post": {
+                "tags": [
+                    "usuario-controller"
+                ],
+                "summary": "createUsuario",
+                "operationId": "createUsuarioUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "usuario",
+                        "description": "usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/usuarios/{auth}": {
+            "post": {
+                "tags": [
+                    "usuario-controller"
+                ],
+                "summary": "autenticar",
+                "operationId": "autenticarUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "credenciais",
+                        "description": "credenciais",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Credenciais"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Cliente": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "nome": {
+                    "type": "string"
+                }
+            },
+            "title": "Cliente"
+        },
+        "Credenciais": {
+            "type": "object",
+            "properties": {
+                "login": {
+                    "type": "string"
+                },
+                "senha": {
+                    "type": "string"
+                }
+            },
+            "title": "Credenciais"
+        },
+        "ItemPedido": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pedido": {
+                    "$ref": "#/definitions/Pedido"
+                },
+                "produto": {
+                    "$ref": "#/definitions/Produto"
+                },
+                "qtdade": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ItemPedido"
+        },
+        "Pedido": {
+            "type": "object",
+            "properties": {
+                "cliente": {
+                    "$ref": "#/definitions/Cliente"
+                },
+                "dataPedido": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "REALIZADO",
+                        "CANCELADO"
+                    ]
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "Pedido"
+        },
+        "Produto": {
+            "type": "object",
+            "properties": {
+                "descricao": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "preco": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "Produto"
+        },
+        "Token": {
+            "type": "object",
+            "properties": {
+                "login": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "title": "Token"
+        },
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "admin": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "senha": {
+                    "type": "string"
+                }
+            },
+            "title": "Usuario"
+        }
+    }
+}

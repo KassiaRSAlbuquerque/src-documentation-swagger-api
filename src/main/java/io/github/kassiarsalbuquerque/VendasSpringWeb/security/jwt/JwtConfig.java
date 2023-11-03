@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -56,11 +57,27 @@ public class JwtConfig extends WebSecurityConfigurerAdapter {
 			    		.hasAnyRole("USER","ADMIN")
 			    	.antMatchers( HttpMethod.POST, "/usuarios/**")
 			    		.permitAll()
+			    	.antMatchers( HttpMethod.POST, "/usuarios/**")
+			    		.permitAll()
 			    	.anyRequest().authenticated()
 		    	.and()
 		    		.sessionManagement()//sessao statless--> toda vez q chamar tem q passar o token
 		    		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)// desabilita a politica de criacao de sessao
 		    	.and()
 		    		.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
+    
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+    	
+    	// url swagger : http://localhost:8080/vendaSpringWebApplication/swagger-ui.html
+    	
+        web.ignoring().antMatchers(
+                "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**");
     }
 }

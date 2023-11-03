@@ -78,18 +78,18 @@ public class JwtService {
 				.getBody();
 	}
 	
-	public static void main(String[] args) {
-		
-		Usuario usuario = new Usuario();
-		usuario.setLogin("teste123");
-		
-		ConfigurableApplicationContext contexto = SpringApplication.run(VendasSpringWebApplication.class);
-		
-		JwtService service = contexto.getBean(JwtService.class);
-		String token = service.gerarToken(usuario);
-		System.out.println("Token :" +token);
-		
-		System.out.println("Token valido :" + service.tokenValido(token));
-		System.out.println("Obter usuario do token :" + service.obterLoginUsuario(token));
-	}
+//	public static void main(String[] args) {
+//		
+//		Usuario usuario = new Usuario();
+//		usuario.setLogin("teste123");
+//		
+//		ConfigurableApplicationContext contexto = SpringApplication.run(VendasSpringWebApplication.class);
+//		
+//		JwtService service = contexto.getBean(JwtService.class);
+//		String token = service.gerarToken(usuario);
+//		System.out.println("Token :" +token);
+//		
+//		System.out.println("Token valido :" + service.tokenValido(token));
+//		System.out.println("Obter usuario do token :" + service.obterLoginUsuario(token));
+//	}
 }
