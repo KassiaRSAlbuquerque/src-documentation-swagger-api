@@ -2,9 +2,10 @@ package io.github.kassiarsalbuquerque.VendasSpringWeb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class VendasSpringWebApplication {
+public class VendasSpringWebApplication extends SpringBootServletInitializer{
 
 
 //	@Bean
